@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input,textarea,select{
+    @apply block w-full p-2 border border-slate-700 
+    focus:outline-none 
+    focus:border-teal-500 
+    rounded-xl
+}
+
+button{
+    @apply px-4 py-2 rounded-xl text-white
+}
