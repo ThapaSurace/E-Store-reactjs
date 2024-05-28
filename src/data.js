@@ -19,7 +19,7 @@ export const categories = [
   export const products = [
     {
       id: 1,
-      title: "Elton John by O'Neill",
+      title: "Elton John",
       img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1703328414i/2784.jpg",
       genre: ["Arts", "Music"],
       synopsis:

@@ -1,6 +1,7 @@
 import React from 'react'
 import { BiCart } from 'react-icons/bi'
 import { FaExpandArrowsAlt } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const ProductCard = ({item}) => {
   return (
@@ -19,9 +20,13 @@ const ProductCard = ({item}) => {
                 <div className='flex gap-2 justify-center items-center 
                 absolute bottom-5 w-full'>
                  <BiCart className='text-4xl bg-white p-1 
-                 rounded-full' />
+                 rounded-full hover:scale-110 transition-all
+                 duration-300 ease-in-out' />
+                 <Link to={`/product/${item.id}`}>
                  <FaExpandArrowsAlt className='text-4xl bg-white p-1 
-                 rounded-full' />
+                 rounded-full hover:scale-110 transition-all
+                 duration-300 ease-in-out' />
+                 </Link>
                 </div>
             </div>
         </div>
@@ -35,8 +40,8 @@ const ProductCard = ({item}) => {
            <p className='text-sm text-gray-400'>
             by <span>{item.author}</span>
             </p>
-            <p className='font-semibold text-gray-800'>
-                {item.price}
+            <p className='font-semibold text-gray-800 mt-3'>
+                ${item.price}
             </p>
         </div>
 

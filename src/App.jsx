@@ -1,23 +1,40 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Products from './pages/Products'
-import Navbar from './components/Navbar'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Products from "./pages/Products";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ProductSinglePage from "./pages/ProductSinglePage";
+import Cart from "./pages/Cart";
+import ProductsLists from "./pages/Admin/ProductLists";
+import AdminLayout from "./utils/AdminLayout";
+import UserLayout from "./utils/UserLayout";
+import UserList from "./pages/Admin/UserList";
+import Orderlist from "./pages/Admin/OrderList";
 
 const App = () => {
   return (
     <>
-    <Navbar />
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/products' element={<Products />} />
-    </Routes>
-    </>
-  )
-}
+      <Routes>
+        <Route element={<UserLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/products/:category" element={<Products />} />
+          <Route path="/product/:id" element={<ProductSinglePage />} />
+          <Route path="/cart" element={<Cart />} />
+        </Route>
 
-export default App
+        <Route element={<AdminLayout />}>
+          <Route path="/dashboard/productlist" element={<ProductsLists />} />
+          <Route path="/dashboard/userlist" element={<UserList />} />
+          <Route path="/dasnboard/orderlist" element={<Orderlist />} />
+        </Route>
+      </Routes>
+    </>
+  );
+};
+
+export default App;

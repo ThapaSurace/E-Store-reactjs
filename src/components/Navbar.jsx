@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const user = false;
+  const isAdmin = true
   return (
-    <div className="border-b sticky top-0 py-4 bg-white z-50">
+    <div className="border-b sticky top-0 py-4 bg-white z-50 shadow">
       <div
         className="max-w-6xl mx-auto px-4 flex justify-between 
        items-center"
@@ -27,22 +28,30 @@ const Navbar = () => {
             <span className="cursor-pointer">logout</span>
           ) : (
             <>
-              <Link to='/register'>
-              <span className="cursor-pointer">Register</span>
+              <Link to="/register">
+                <span className="cursor-pointer">Register</span>
               </Link>
-              
-              <Link to='/login'>
-              <span className="cursor-pointer">login</span>
+
+              <Link to="/login">
+                <span className="cursor-pointer">login</span>
               </Link>
             </>
           )}
-          <div className="relative">
-            <CiShoppingCart size={30} />
-            <div className="absolute top-0 left-4 
+          <Link to='/cart'>
+            <div className="relative">
+              <CiShoppingCart size={30} />
+              <div
+                className="absolute top-0 left-4 
             bg-red-600 text-white w-4 h-4 rounded-full
             flex justify-center items-center"
-            >1</div>
-          </div>
+              >
+                1
+              </div>
+            </div>
+          </Link>
+          {isAdmin && <Link to='/dashboard/productlist'>
+            <span className="ml-3">Dashboard</span>
+          </Link>}
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const CategoryCard = ({cat}) => {
   return (
-    <Link>
+    <Link to={`/products/${cat.title}`}>
       <div className='h-[60vh] rounded-xl shadow-md relative'>
         <img src={cat.img} alt="cat"
          className='w-full h-full object-cover object-center rounded-xl'
