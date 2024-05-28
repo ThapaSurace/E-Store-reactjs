@@ -4,8 +4,6 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Products from "./pages/Products";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import ProductSinglePage from "./pages/ProductSinglePage";
 import Cart from "./pages/Cart";
 import ProductsLists from "./pages/Admin/ProductLists";
