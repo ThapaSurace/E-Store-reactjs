@@ -11,6 +11,11 @@ import AdminLayout from "./utils/AdminLayout";
 import UserLayout from "./utils/UserLayout";
 import UserList from "./pages/Admin/UserList";
 import Orderlist from "./pages/Admin/OrderList";
+import AddProduct from "./pages/Admin/AddProduct";
+import EditProduct from "./pages/Admin/EditProduct";
+import PrivateRoute from "./utils/PrivateRoute";
+import AdminRoute from "./utils/AdminRoute";
+
 
 const App = () => {
   return (
@@ -22,13 +27,21 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/products/:category" element={<Products />} />
           <Route path="/product/:id" element={<ProductSinglePage />} />
-          <Route path="/cart" element={<Cart />} />
+
+          <Route element={<PrivateRoute />}>
+            <Route path="/cart" element={<Cart />} />
+          </Route>
+
         </Route>
 
         <Route element={<AdminLayout />}>
-          <Route path="/dashboard/productlist" element={<ProductsLists />} />
+         <Route element={<AdminRoute />}>
+         <Route path="/dashboard/productlist" element={<ProductsLists />} />
           <Route path="/dashboard/userlist" element={<UserList />} />
-          <Route path="/dasnboard/orderlist" element={<Orderlist />} />
+          <Route path="/dashboard/orderlist" element={<Orderlist />} />
+          <Route path="/dashboard/addproduct" element={<AddProduct />} />
+          <Route path="/dashbaord/editproduct" element={<EditProduct />} />
+         </Route>
         </Route>
       </Routes>
     </>

@@ -4,8 +4,7 @@ const Login = () => {
   return (
     <div className="h-[90vh] flex justify-center items-center">
       <div
-        className="border rounded-xl shadow-sm p-4 max-w-xl 
-    w-full mx-auto"
+        className="border rounded-xl shadow-sm p-4 max-w-xl w-full mx-auto"
       >
         <h1 className="text-2xl font-semibold text-slate-900 mb-6">
           Welcome Back

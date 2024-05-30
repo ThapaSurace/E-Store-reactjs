@@ -9,7 +9,7 @@ const Home = () => {
         <CategoryList />
       </div>
 
-      <div>
+      <div className="mb-10">
         <h1 className="text-3xl text-slate-900 font-semibold mb-4">
           Popular Products
         </h1>

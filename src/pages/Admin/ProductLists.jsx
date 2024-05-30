@@ -1,14 +1,20 @@
 import React from "react";
 import { FiEdit } from "react-icons/fi";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const ProductsLists = () => {
+  const navigate = useNavigate()
+
+  const handleAdd = () => navigate('/dashboard/addproduct')
+  const handleEdit = () => navigate('/dashbaord/editproduct')
+
   return (
     <div className="flex flex-col max-w-5xl mx-auto mt-10">
       <h1 className="text-center text-2xl font-semibold mb-10">
         Product Lists
       </h1>
-      <button className=" self-end mb-4 bg-teal-700 rounded-md px-4 py-2 text-white">
+      <button onClick={handleAdd} className=" self-end mb-4 bg-teal-700 rounded-md px-4 py-2 text-white">
         Add New Product
       </button>
       <div className="p-1.5 min-w-full inline-block align-middle">
@@ -40,7 +46,7 @@ const ProductsLists = () => {
                 <td>product.stock</td>
                 <td>product.price</td>
                 <td className="flex gap-2 items-center">
-                  <FiEdit size={25} className="text-blue-500 hover:text-blue-600 cursor-pointer" />
+                  <FiEdit onClick={handleEdit} size={25} className="text-blue-500 hover:text-blue-600 cursor-pointer" />
                   <MdOutlineDeleteOutline size={25} className="text-red-500 hover:text-red-600 cursor-pointer" />
                 </td>
               </tr>

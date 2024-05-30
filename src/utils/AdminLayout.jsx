@@ -1,23 +1,11 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import AdminNavbar from "../components/AdminNavbar";
 
 const AdminLayout = () => {
   return (
     <>
-      <div className="border-b py-4">
-        <div className="container">
-          <ul
-            className="flex gap-3 text-lg font-semibold 
-            text-slate-800"
-          >
-            <li>Users</li>
-            <Link to="/dashboard/productlist">
-              <li>Product</li>
-            </Link>
-            <li>Orders</li>
-          </ul>
-        </div>
-      </div>
+      <AdminNavbar />
       <Outlet />
     </>
   );
