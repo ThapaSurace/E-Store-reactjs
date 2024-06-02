@@ -35,13 +35,13 @@ const App = () => {
         </Route>
 
         <Route element={<AdminLayout />}>
-         <Route element={<AdminRoute />}>
-         <Route path="/dashboard/productlist" element={<ProductsLists />} />
-          <Route path="/dashboard/userlist" element={<UserList />} />
-          <Route path="/dashboard/orderlist" element={<Orderlist />} />
-          <Route path="/dashboard/addproduct" element={<AddProduct />} />
-          <Route path="/dashbaord/editproduct" element={<EditProduct />} />
-         </Route>
+          <Route element={<AdminRoute />}>
+            <Route path="/dashboard/productlist" element={<ProductsLists />} />
+            <Route path="/dashboard/userlist" element={<UserList />} />
+            <Route path="/dashboard/orderlist" element={<Orderlist />} />
+            <Route path="/dashboard/addproduct" element={<AddProduct />} />
+            <Route path="/dashbaord/editproduct" element={<EditProduct />} />
+          </Route>
         </Route>
       </Routes>
     </>
