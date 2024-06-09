@@ -15,17 +15,19 @@ import AddProduct from "./pages/Admin/AddProduct";
 import EditProduct from "./pages/Admin/EditProduct";
 import PrivateRoute from "./utils/PrivateRoute";
 import AdminRoute from "./utils/AdminRoute";
+import { Toaster } from "react-hot-toast";
 
 
 const App = () => {
   return (
     <>
+      <Toaster />
       <Routes>
         <Route element={<UserLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/products/:category" element={<Products />} />
+          <Route path="/products/:genre" element={<Products />} />
           <Route path="/product/:id" element={<ProductSinglePage />} />
 
           <Route element={<PrivateRoute />}>
@@ -44,6 +46,7 @@ const App = () => {
           </Route>
         </Route>
       </Routes>
+
     </>
   );
 };

@@ -1,7 +1,10 @@
+
 import React from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 
 const UserList = () => {
+
+
   return (
     <div className="flex flex-col max-w-5xl mx-auto mt-10">
       <h1 className="text-center text-2xl font-semibold mb-4 text-slate-900">
@@ -20,18 +23,21 @@ const UserList = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="odd:bg-white even:bg-gray-100">
-                <td>123</td>
-                <td>user.username</td>
-                <td>user.email</td>
-                <td>aactive</td>
-                <td>
-                  <MdOutlineDeleteOutline
-                    size={25}
-                    className="text-red-500 hover:text-red-600 cursor-pointer"
-                  />
-                </td>
-              </tr>
+       
+                  <tr className="odd:bg-white even:bg-gray-100">
+                    <td>user._id</td>
+                    <td>user.username</td>
+                    <td>user.email</td>
+                    <td>active</td>
+                    <td>
+                      <MdOutlineDeleteOutline
+                        size={25}
+    
+                        className="text-red-500 hover:text-red-600 cursor-pointer"
+                      />
+                    </td>
+                  </tr>
+             
             </tbody>
           </table>
         </div>

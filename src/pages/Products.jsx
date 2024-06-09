@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom'
 import ProductList from '../components/ProductList'
 
 const Products = () => {
-  const {category} = useParams()
+  const {genre} = useParams()
+  
   return (
     <div className='container my-10'>
       <h1 className='text-3xl font-bold text-slate-900'>
-        {category}
+        {genre}
         </h1>
         {/* filter */}
         <div className='flex justify-between items-center py-4 border-b'>
@@ -36,7 +37,7 @@ const Products = () => {
         </div>
         {/* productlist */}
         <div className='my-4'>
-        <ProductList />
+        <ProductList genre={genre} />
         </div>
     </div>
   )

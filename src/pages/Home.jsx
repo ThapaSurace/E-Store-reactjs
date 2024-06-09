@@ -2,7 +2,9 @@ import React from "react";
 import CategoryList from "../components/CatgeoryList";
 import ProductList from "../components/ProductList";
 
+
 const Home = () => {
+  
   return (
     <div className="max-w-6xl mx-auto px-4">
       <div className="my-10">

@@ -13,7 +13,7 @@ textarea,
 select {
   @apply block w-full px-2 py-1.5 border border-slate-700 
     focus:outline-none 
-    focus:border-teal-500 
+    focus:border-teal-500 focus:bg-none
     rounded-md;
 }
 
@@ -35,4 +35,8 @@ th{
 
 td{
   @apply px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-700
+}
+
+.error_message{
+  @apply text-red-500 text-sm font-medium italic mt-1
 }

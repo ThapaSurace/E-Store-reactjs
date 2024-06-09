@@ -1,9 +1,11 @@
 import React from "react";
 import { CiShoppingCart } from "react-icons/ci";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const user = false;
+  const {user} = useSelector(state => state.user)
+
   const isAdmin = true
   return (
     <div className="border-b sticky top-0 py-4 bg-white z-50 shadow">

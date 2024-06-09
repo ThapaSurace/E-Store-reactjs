@@ -2,6 +2,7 @@ import CartCard from "../components/CartCard";
 import CheckOutCard from "../components/CheckOutCard";
 
 const Cart = () => {
+
   return (
     <div className="max-w-[1240px] mx-auto p-4">
       <h1 className="font-light text-center mb-4 text-2xl">YOUR BAG</h1>
