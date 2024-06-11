@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +10,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await
-        newRequest.post("/auth/register", data)
+      const res = await newRequest.post("/auth/register", data)
       toast.success(res.data);
       navigate('/login')
     } catch (error) {

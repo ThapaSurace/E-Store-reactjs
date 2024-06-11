@@ -1,12 +1,25 @@
 import React from "react";
 import { CiShoppingCart } from "react-icons/ci";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { newRequest } from "../utils/newRequest";
+import toast from "react-hot-toast";
+import { logout } from "../redux/authRedux";
 
 const Navbar = () => {
-  const {user} = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const { user } = useSelector(state => state.user)
+  
+  const handleLogout = async () => {
+    try {
+      const res = await newRequest.post('/auth/logout')
+      toast.success(res.data)
+      dispatch(logout())
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  const isAdmin = true
   return (
     <div className="border-b sticky top-0 py-4 bg-white z-50 shadow">
       <div
@@ -27,7 +40,7 @@ const Navbar = () => {
         {/* right */}
         <div className="flex gap-2 items-center uppercase">
           {user ? (
-            <span className="cursor-pointer">logout</span>
+            <span onClick={handleLogout} className="cursor-pointer">logout</span>
           ) : (
             <>
               <Link to="/register">
@@ -51,7 +64,7 @@ const Navbar = () => {
               </div>
             </div>
           </Link>
-          {isAdmin && <Link to='/dashboard/productlist'>
+          {user?.isAdmin && <Link to='/dashboard/productlist'>
             <span className="ml-3">Dashboard</span>
           </Link>}
         </div>

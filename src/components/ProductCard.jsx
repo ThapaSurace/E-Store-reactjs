@@ -22,7 +22,7 @@ const ProductCard = ({item}) => {
                  <BiCart className='text-4xl bg-white p-1 
                  rounded-full hover:scale-110 transition-all
                  duration-300 ease-in-out' />
-                 <Link to={`/product/${item.id}`}>
+                 <Link to={`/product/${item._id}`}>
                  <FaExpandArrowsAlt className='text-4xl bg-white p-1 
                  rounded-full hover:scale-110 transition-all
                  duration-300 ease-in-out' />

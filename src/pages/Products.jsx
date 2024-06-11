@@ -1,46 +1,42 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import ProductList from '../components/ProductList'
+import React, { useState } from 'react';
+import ProductList from '../components/ProductList';
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
-  const {genre} = useParams()
-  
+const {genre} = useParams()
+
   return (
     <div className='container my-10'>
-      <h1 className='text-3xl font-bold text-slate-900'>
-        {genre}
-        </h1>
-        {/* filter */}
-        <div className='flex justify-between items-center py-4 border-b'>
-          {/* left */}
-          <div>
-            <label className='text-xl font-semibold mb-1' 
-            htmlFor="language">Filter Language</label>
-            <select name="language" id="language">
-              <option selected disabled>language</option>
-              <option>Nepali</option>
-              <option>English</option>
-              <option>Hindi</option>
-            </select>
-          </div>
-
-          {/* right */}
-          <div>
-          <label className='text-xl font-semibold mb-1' 
-            htmlFor="price">Sort Product</label>
-            <select name="price" id="price">
-              <option value='newest'>Newest</option>
-              <option value='asc'>Price(asc)</option>
-              <option value='desc'>Price(desc)</option>
-            </select>
-          </div>
+      <h1 className='text-3xl font-bold text-slate-900'>{genre}</h1>
+      {/* filter */}
+      <div className='flex justify-between items-center py-4 border-b'>
+        {/* left */}
+        <div>
+          <label className='text-xl font-semibold mb-1' htmlFor="language">Filter Language</label>
+          <select name="language" id="language">
+            <option value="" disabled>Select language</option>
+            <option value="Nepali">Nepali</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+          </select>
         </div>
-        {/* productlist */}
-        <div className='my-4'>
+
+        {/* right */}
+        <div>
+          <label className='text-xl font-semibold mb-1' htmlFor="price">Sort Product</label>
+          <select name="price" id="price">
+            <option value="true">Newest</option>
+            <option value="asc">Price (asc)</option>
+            <option value="desc">Price (desc)</option>
+          </select>
+        </div>
+      </div>
+      {/* productlist */}
+      <div className='my-4'>
         <ProductList genre={genre} />
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

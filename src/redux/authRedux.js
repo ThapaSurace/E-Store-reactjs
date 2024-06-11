@@ -13,12 +13,15 @@ const authSlice = createSlice({
         },
         loginSuccess: (state,action) => {
             state.user = action.payload
+            state.isFetching = false
         },
         loginFailure: (state,action) => {
             state.error = true
+        },
+        logout: (state,action) => {
+            state.user = null
         }
     }
 })
-export const {loginStart, loginSuccess, loginFailure} = 
-authSlice.actions
+export const {loginStart, loginSuccess, loginFailure, logout} = authSlice.actions
 export default authSlice.reducer
