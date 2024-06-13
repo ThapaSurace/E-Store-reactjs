@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CiShoppingCart } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { newRequest } from "../utils/newRequest";
 import toast from "react-hot-toast";
 import { logout } from "../redux/authRedux";
+import { getTotalQuantity } from "../redux/cartRedux";
 
 const Navbar = () => {
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.user)
+
+  const {totalQuantity, items} = useSelector(state => state.cart)
+
+
+  useEffect(()=>{
+    dispatch(getTotalQuantity())
+  },[dispatch,items])
   
   const handleLogout = async () => {
     try {
@@ -60,7 +68,7 @@ const Navbar = () => {
             bg-red-600 text-white w-4 h-4 rounded-full
             flex justify-center items-center"
               >
-                1
+                {totalQuantity}
               </div>
             </div>
           </Link>

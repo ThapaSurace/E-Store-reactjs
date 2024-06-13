@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 
 const Products = () => {
 const {genre} = useParams()
+const [sort,setSort] = useState('')
+const [filter,setFilter] = useState('')
 
   return (
     <div className='container my-10'>
@@ -13,8 +15,8 @@ const {genre} = useParams()
         {/* left */}
         <div>
           <label className='text-xl font-semibold mb-1' htmlFor="language">Filter Language</label>
-          <select name="language" id="language">
-            <option value="" disabled>Select language</option>
+          <select name="language" id="language" onChange={e=>setFilter(e.target.value)}>
+            <option value="">Select language</option>
             <option value="Nepali">Nepali</option>
             <option value="English">English</option>
             <option value="Hindi">Hindi</option>
@@ -24,8 +26,8 @@ const {genre} = useParams()
         {/* right */}
         <div>
           <label className='text-xl font-semibold mb-1' htmlFor="price">Sort Product</label>
-          <select name="price" id="price">
-            <option value="true">Newest</option>
+          <select name="price" id="price" onChange={e=>setSort(e.target.value)}>
+            <option value="">Sort Price</option>
             <option value="asc">Price (asc)</option>
             <option value="desc">Price (desc)</option>
           </select>
@@ -33,7 +35,7 @@ const {genre} = useParams()
       </div>
       {/* productlist */}
       <div className='my-4'>
-        <ProductList genre={genre} />
+        <ProductList genre={genre} sort={sort} filter={filter} />
       </div>
     </div>
   );

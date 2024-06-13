@@ -1,7 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
 import CartCard from "../components/CartCard";
 import CheckOutCard from "../components/CheckOutCard";
+import { useEffect } from "react";
+import { clearCart, getTotalPrice } from "../redux/cartRedux";
 
 const Cart = () => {
+  const dispatch = useDispatch()
+  const {items, totalPrice} = useSelector(state => state.cart)
+
+  useEffect(()=>{
+     dispatch(getTotalPrice())
+  },[dispatch, items])
 
   return (
     <div className="max-w-[1240px] mx-auto p-4">
@@ -12,9 +21,9 @@ const Cart = () => {
           CONTINUE SHOPPING
         </button>
         <div>
-          <span className="underline cursor-pointer mx-2">Shopping bag(0)</span>
+          <span className="underline cursor-pointer mx-2">Shopping bag({items.length})</span>
         </div>
-        <button className="font-semibold hover:text-red-600">Clear Cart</button>
+        <button onClick={()=>dispatch(clearCart())} className="font-semibold text-red-600">Clear Cart</button>
       </div>
 
       {/* bottom */}
@@ -22,12 +31,16 @@ const Cart = () => {
         {/* cart  */}
 
         <div className="flex-[2] flex flex-col gap-6 py-4">
-          <CartCard />
+          {
+            items.map(item=>(
+              <CartCard key={item._id} item={item} />
+            ))
+          }
         </div>
 
         {/* checkout */}
         <div className="flex-[1] border-[0.5px] border-gray-400 shadow-sm p-4 rounded-md h-min">
-          <CheckOutCard />
+          <CheckOutCard totalPrice={totalPrice} />
         </div>
       </div>
     </div>
