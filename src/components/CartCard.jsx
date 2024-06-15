@@ -15,7 +15,7 @@ const CartCard = ({item}) => {
 
   return (
     <div className="flex justify-between gap-10 p-4  border-b  relative cursor-pointer">
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-1">
         <div className="h-32 w-32">
           <img
             src={item.img}

@@ -17,7 +17,7 @@ const AdminNavbar = () => {
           <ul className="flex text-xl gap-6 text-slate-800 font-medium">
             {
               navLinks.map(link=>(
-                <Link to={link.path}>
+                <Link key={link.label} to={link.path}>
                   <li>{link.label}</li>
                 </Link>
               ))
