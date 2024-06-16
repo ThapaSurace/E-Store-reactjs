@@ -2,12 +2,36 @@ import React from "react";
 import { FiEdit } from "react-icons/fi";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useProducts } from "../../api/apiCall";
+import { newRequest } from "../../utils/newRequest";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setProduct } from "../../redux/productRedux";
 
 const ProductsLists = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const {data,isLoading,error, refetch} = useProducts()
+
+  const handleDelete = async (id) => {
+    try {
+      await newRequest.delete(`/product/${id}`)
+      toast.success("Product deleted Sucessfully!")
+      refetch()
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleAdd = () => navigate('/dashboard/addproduct')
-  const handleEdit = () => navigate('/dashbaord/editproduct')
+  const handleEdit = (product) => {
+    dispatch(setProduct(product))
+    navigate('/dashbaord/editproduct')
+  }
+
+  if(isLoading) return <span>loading....</span>
+  if(error) return <span>Error fetching data!</span>
 
   return (
     <div className="flex flex-col max-w-5xl mx-auto mt-10">
@@ -31,25 +55,29 @@ const ProductsLists = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="odd:bg-white even:bg-gray-100">
+              {
+                data.map(product => (
+                  <tr key={product._id} className="odd:bg-white even:bg-gray-100">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                  1234
+                 { product._id }
                 </td>
                 <td>
                   <img
-                    src=""
+                    src={product.img}
                     alt=""
                     className="h-10 w-10 rounded-full object-cover object-center"
                   />
                 </td>
-                <td>product.title</td>
-                <td>product.stock</td>
-                <td>product.price</td>
+                <td>{product.title}</td>
+                <td>{product.stock}</td>
+                <td>{product.price}</td>
                 <td className="flex gap-2 items-center">
-                  <FiEdit onClick={handleEdit} size={25} className="text-blue-500 hover:text-blue-600 cursor-pointer" />
-                  <MdOutlineDeleteOutline size={25} className="text-red-500 hover:text-red-600 cursor-pointer" />
+                  <FiEdit onClick={()=>handleEdit(product)} size={25} className="text-blue-500 hover:text-blue-600 cursor-pointer" />
+                  <MdOutlineDeleteOutline onClick={()=>handleDelete(product._id)} size={25} className="text-red-500 hover:text-red-600 cursor-pointer" />
                 </td>
               </tr>
+                ))
+              }
             </tbody>
           </table>
         </div>

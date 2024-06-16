@@ -2,20 +2,11 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import { newRequest } from '../utils/newRequest';
 import { useQuery } from '@tanstack/react-query';
+import { useProducts } from '../api/apiCall';
 
 const ProductList = ({ genre, sort, filter }) => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['products',genre,sort],
-    queryFn: async () => {
-      try {
-        const res = await 
-        newRequest.get(genre ? `/products?genre=${genre}&sort=${sort}` : '/products')
-        return res.data
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  })
+  const { data, isLoading, error } = useProducts(genre,sort)
+
   if (isLoading) return <span>loading...</span>
   if (error) return <span>Erro fetching data!</span>
 

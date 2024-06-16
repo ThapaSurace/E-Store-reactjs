@@ -1,9 +1,14 @@
 
 import React from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { useUsers } from "../../api/apiCall";
 
 const UserList = () => {
 
+  const {data,isLoading,error} = useUsers()
+
+  if(isLoading) return <span>loading...</span>
+  if(error) return  <span>Erro fetching data!</span>
 
   return (
     <div className="flex flex-col max-w-5xl mx-auto mt-10">
@@ -24,20 +29,23 @@ const UserList = () => {
             </thead>
             <tbody>
        
-                  <tr className="odd:bg-white even:bg-gray-100">
-                    <td>user._id</td>
-                    <td>user.username</td>
-                    <td>user.email</td>
+                {
+                  data.map(user=>(
+                    <tr key={user._id} className="odd:bg-white even:bg-gray-100">
+                    <td>{user._id}</td>
+                    <td>{user.username}</td>
+                    <td>{user.email}</td>
                     <td>active</td>
                     <td>
                       <MdOutlineDeleteOutline
                         size={25}
-    
                         className="text-red-500 hover:text-red-600 cursor-pointer"
                       />
                     </td>
                   </tr>
              
+                  ))
+                }
             </tbody>
           </table>
         </div>

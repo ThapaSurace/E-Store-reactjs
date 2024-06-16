@@ -1,11 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useParams } from "react-router-dom";
-import { newRequest } from "../utils/newRequest";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartRedux";
 import toast from "react-hot-toast";
+import { useSingleProduct } from "../api/apiCall";
 
 const ProductSinglePage = () => {
   const [quantity,setQuantity] = useState(1)
@@ -13,17 +12,7 @@ const ProductSinglePage = () => {
   const dispatch = useDispatch()
 
   const {id} = useParams()
-  const {data,isLoading,error} = useQuery({
-    queryKey:['product',id],
-    queryFn: async () => {
-      try {
-        const res = await newRequest.get(`/product/${id}`)
-        return res.data
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  })
+  const {data,isLoading,error} = useSingleProduct(id)
 
   if(isLoading) return <span>loading...</span>
   if(error) return  <span>Erro fetching data!</span>
