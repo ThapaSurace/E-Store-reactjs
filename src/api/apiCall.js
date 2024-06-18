@@ -55,3 +55,22 @@ export const useUsers = () => {
     })
   )
 }
+
+
+//getting all orders
+
+export const useOrders = () => {
+  return(
+    useQuery({
+      queryKey:['orders'],
+      queryFn: async () => {
+        try {
+          const res = await newRequest.get(`/orders`)
+          return res.data
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    })
+  )
+}

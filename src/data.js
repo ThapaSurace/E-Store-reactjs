@@ -108,3 +108,27 @@ export const categories = [
   
 
   // npm install --save @stripe/react-stripe-js @stripe/stripe-js
+
+
+  export const countries = [
+    { code: 'AU', name: 'Australia' },
+    { code: 'BR', name: 'Brazil' },
+    { code: 'CA', name: 'Canada' },
+    { code: 'CN', name: 'China' },
+    { code: 'FR', name: 'France' },
+    { code: 'DE', name: 'Germany' },
+    { code: 'IN', name: 'India' },
+    { code: 'ID', name: 'Indonesia' },
+    { code: 'IT', name: 'Italy' },
+    { code: 'JP', name: 'Japan' },
+    { code: 'MX', name: 'Mexico' },
+    { code: 'NP', name: 'Nepal' },
+    { code: 'NG', name: 'Nigeria' },
+    { code: 'PK', name: 'Pakistan' },
+    { code: 'RU', name: 'Russia' },
+    { code: 'SA', name: 'Saudi Arabia' },
+    { code: 'ZA', name: 'South Africa' },
+    { code: 'KR', name: 'South Korea' },
+    { code: 'ES', name: 'Spain' },
+    { code: 'US', name: 'United States' },
+  ];

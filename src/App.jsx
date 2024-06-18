@@ -16,6 +16,9 @@ import EditProduct from "./pages/Admin/EditProduct";
 import PrivateRoute from "./utils/PrivateRoute";
 import AdminRoute from "./utils/AdminRoute";
 import { Toaster } from "react-hot-toast";
+import ShippingForm from "./pages/ShippingForm";
+import Pay from "./pages/Pay";
+import Success from "./pages/Success";
 
 const App = () => {
   return (
@@ -31,6 +34,9 @@ const App = () => {
 
           <Route element={<PrivateRoute />}>
             <Route path="/cart" element={<Cart />} />
+            <Route path="/shipping" element={<ShippingForm />} />
+            <Route path="/pay" element={<Pay />} />
+            <Route path="/success" element={<Success />} />
           </Route>
 
         </Route>

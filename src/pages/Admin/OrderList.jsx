@@ -1,6 +1,11 @@
 import React from "react";
+import { useOrders } from "../../api/apiCall";
 
 const Orderlist = () => {
+  const { data, isLoading, error } = useOrders()
+
+  if (isLoading) return <span>loading....</span>
+  if (error) return <span>Error fetching data!</span>
   return (
     <div className="flex flex-col max-w-5xl mx-auto mt-10">
       <h1 className="text-center text-2xl font-semibold mb-4 text-slate-900">Order Lists</h1>
@@ -17,13 +22,18 @@ const Orderlist = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="odd:bg-white even:bg-gray-100">
-                <td>123</td>
-                <td>2134234234</td>
-                <td>234324</td>
-                <td>$100</td>
-                <td>pending</td>
-              </tr>
+              {
+                data.map(order => (
+                  <tr key={order._id} className="odd:bg-white even:bg-gray-100">
+                    <td>{order._id}</td>
+                    <td>{order.payment_intent}</td>
+                    <td>{order.userId}</td>
+                    <td>${order.amount}</td>
+                    <td>success</td>
+                  </tr>
+
+                ))
+              }
             </tbody>
           </table>
         </div>

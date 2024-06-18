@@ -6,7 +6,7 @@ const upload = async (file) => {
   data.append("upload_preset", "e-store");
   try {
     const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/dw9a31p7k/image/upload",
+      "https://api.cloudinary.com/v1_1/ HERE YOU SHOULD PUT YOUR CLOUD NAME FROM CLOUDINARY /image/upload",
       data
     );
     const { url } = res.data;
